@@ -1,0 +1,22 @@
+#######################################
+# Syntax Coloring Map For Inverse
+####################################### 
+# Class
+#######################################
+
+InverseK	KEYWORD1
+Link	KEYWORD1
+
+#######################################
+# Methods and Functions 
+#######################################	
+
+init	KEYWORD2
+attach	KEYWORD2
+solve	KEYWORD2
+
+#######################################
+# Constants
+#######################################
+ 
+#variableName	LITERAL1
