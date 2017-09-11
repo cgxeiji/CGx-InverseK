@@ -1,5 +1,7 @@
-// Include the library inverse.h
-#include <inverse.h>
+// Arduino/Teensy example for Arduino Braccio
+
+// Include the library InverseK.h
+#include <InverseK.h>
 
 void setup() {
   // Setup the lengths and rotation limits for each link
@@ -11,16 +13,15 @@ void setup() {
   hand.init(270, b2a(0.0), b2a(180.0));
 
   // Attach the links to the inverse kinematic model
-  Inverse.attach(base, upperarm, forearm, hand);
-
-  Serial.begin(115200);
+  InverseK.attach(base, upperarm, forearm, hand);
 
   float a0, a1, a2, a3;
 
-  // Inverse.solve() return true if it could find a solution and false if not. 
-
-  // Inverse.solve(x, y, z, a0, a1, a2, a3)
-  if(Inverse.solve(200, 100, 100, a0, a1, a2, a3)) {
+  // InverseK.solve() return true if it could find a solution and false if not. 
+  
+  // Calculates the angles without considering a specific approach angle
+  // InverseK.solve(x, y, z, a0, a1, a2, a3)
+  if(InverseK.solve(200, 100, 100, a0, a1, a2, a3)) {
     Serial.print(a2b(a0)); Serial.print(',');
     Serial.print(a2b(a1)); Serial.print(',');
     Serial.print(a2b(a2)); Serial.print(',');
@@ -31,9 +32,10 @@ void setup() {
     Serial.print(a2b(0)); Serial.print(',');
     Serial.println(a2b(0));
   }
-
-  // Inverse.solve(x, y, z, a0, a1, a2, a3, phi)
-  if(Inverse.solve(200, 100, 100, a0, a1, a2, a3, 0.0)) {
+  
+  // Calculates the angles considering a specific approach angle 'phi'
+  // InverseK.solve(x, y, z, a0, a1, a2, a3, phi)
+  if(InverseK.solve(200, 100, 100, a0, a1, a2, a3, 0.0)) {
     Serial.print(a2b(a0)); Serial.print(',');
     Serial.print(a2b(a1)); Serial.print(',');
     Serial.print(a2b(a2)); Serial.print(',');
@@ -50,12 +52,12 @@ void loop() {
   
 }
 
-// braccio to angle in radians 
+// Quick conversion from the Braccio angle system to radians 
 float b2a(float b){ 
   return b / 180.0 * PI - HALF_PI;
 }
 
-// angle in radians to braccio
+// Quick conversion from radians to the Braccio angle system
 float a2b(float a) { 
   return (a + HALF_PI) * 180 / PI;
 }
