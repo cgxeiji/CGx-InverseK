@@ -1,4 +1,5 @@
-# CGx-InverseK
-Inverse Kinematic Library for Arduino.
+# Inverse Kinematic Library for Arduino
 
-Calculates the inverse kinematics for a 3 links arm and a rotating base.
+Calculates the inverse kinematics for a 3 links arm with a rotating base.
+
+Tested with Arduino UNO and Teensy 3.6, with the robotic arm Arduino Braccio.
