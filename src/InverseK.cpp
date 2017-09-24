@@ -1,3 +1,8 @@
+/*
+  InverseK.cpp - Library for processing inverse kinematics of a 3-link robotic arm.
+  Created by Eiji Onchi, September 24, 2017.
+  Released into the public domain.
+*/
 
 #include "math.h"
 #include "InverseK.h"
