@@ -10,9 +10,9 @@ Tested with Arduino UNO and Teensy 3.6, with the robotic arm Arduino Braccio.
 A `Link` is a straight line from one joint to another. We usually need the
 length of `Link`s to calculate the inverse kinematics. For the braccio robot
 arm, we have **4 links**: `base` that connects `a0` with `a1` with
-a length 0mm, `upperarm` that connects `a1` and `a2` with a length 200mm,
-`forearm` that connects `a2` with `a3` with a length 200mm, and `hand` that
-connects `a3` with the end effector with a length 270mm.
+a length of 0mm, `upperarm` that connects `a1` and `a2` with a length of 200mm,
+`forearm` that connects `a2` with `a3` with a length of 200mm, and `hand` that
+connects `a3` with the end effector with a length of 270mm.
 
 To simplify calculations, we assume that the origin point starts at `a1` and
 `a0` shares the same point with `a1`.
@@ -64,7 +64,7 @@ Here, `x`, `y`, and `z` and defined in **mm** and follow the system:
 ![coordinates](./img/coordinates.png)
 
 The solver will return `TRUE` if a solution is found and `FALSE` if there are
-no solutions. If case of a `FALSE` return, the values of `a0`, `a1`, `a2`, and
+no solutions. In case of a `FALSE` return, the values of `a0`, `a1`, `a2`, and
 `a3` are not guaranteed.
 
 
