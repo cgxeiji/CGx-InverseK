@@ -21,13 +21,13 @@ To simplify calculations, we assume that the origin point starts at `a1` and
 
 We can setup a link by declaring a variable of type `Link`:
 
-```
+```objectivec
 Link myLink;
 ```
 
 Then, we initialize the `Link` with the following values:
 
-```
+```objectivec
 myLink.init(_length_, _min_angle_, _max_angle_);
 ```
 
@@ -35,27 +35,27 @@ Each angle is defined in **radians** and the length is defined in **mm**.
 
 Finally, we attach each `Link` to the inverse kinematic solver:
 
-```
+```objectivec
 InverseK.attach(base, upperarm, forearm, hand)
 ```
 
 To get the inverse kinematic, first we need to define 4 float variables:
 
-```
+```objectivec
 float a0, a1, a2, a3;
 ```
 
 These variables are passed to the solver as pointers and their values are
 modified by the solver when we call the following function:
 
-```
+```objectivec
 InverseK.solve(_x_, _y_, _z_, a0, a1, a2, a3) // this returns TRUE or FALSE
 ```
 
 If a specific approach angle `phi` is necessary (e.g. you need to approach a piece
 from above), you can use:
 
-```
+```objectivec
 InverseK.solve(_x_, _y_, _z_, a0, a1, a2, a3, phi) // this returns TRUE or FALSE
 ```
 
@@ -81,7 +81,7 @@ to polar coordinates.
 
 ## Practical Example
 
-```
+```objectivec
 // Include the library InverseK.h
 #include <InverseK.h>
 
