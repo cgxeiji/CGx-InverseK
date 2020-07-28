@@ -138,3 +138,6 @@ float a2b(float a) {
 
 **You can check the example sketch at:**
 `File->Examples->CGx InverseK->CGx_InverseK_Example`
+
+**If you want to control the arm using Gcode, check:**
+[CGx-Gcode-RoborArm](https://github.com/cgxeiji/CGx-Gcode-RobotArm)
