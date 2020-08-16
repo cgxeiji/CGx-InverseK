@@ -21,7 +21,7 @@ void setup() {
 
   // Calculates the angles without considering a specific approach angle
   // InverseK.solve(x, y, z, a0, a1, a2, a3)
-  if(InverseK.solve(200, 100, 100, a0, a1, a2, a3)) {
+  if(InverseK.solve(550, 0, 50, a0, a1, a2, a3)) {
     Serial.print(a2b(a0)); Serial.print(',');
     Serial.print(a2b(a1)); Serial.print(',');
     Serial.print(a2b(a2)); Serial.print(',');
@@ -30,10 +30,9 @@ void setup() {
     Serial.println("No solution found!");
   }
 
-  // Calculates the angles considering a specific approach angle 'phi'
+  // Calculates the angles considering a specific approach angle
   // InverseK.solve(x, y, z, a0, a1, a2, a3, phi)
-  /*
-  if(InverseK.solve(200, 100, 100, a0, a1, a2, a3, 0.0)) {
+  if(InverseK.solve(550, 0, 50, a0, a1, a2, a3, b2a(90.0))) {
     Serial.print(a2b(a0)); Serial.print(',');
     Serial.print(a2b(a1)); Serial.print(',');
     Serial.print(a2b(a2)); Serial.print(',');
@@ -41,7 +40,6 @@ void setup() {
   } else {
     Serial.println("No solution found!");
   }
-  */
 }
 
 void loop() {

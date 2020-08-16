@@ -8,14 +8,16 @@ Tested with Arduino UNO and Teensy 3.6, with the robotic arm Arduino Braccio.
 ![braccio-labels](./img/labels.png)
 
 A `Link` is a straight line from one joint to another. We usually need the
-length of `Link`s to calculate the inverse kinematics. For the braccio robot
+length of `links` to calculate the inverse kinematics. For the braccio robot
 arm, we have **4 links**: `base` that connects `a0` with `a1` with
 a length of 0mm, `upperarm` that connects `a1` and `a2` with a length of 200mm,
 `forearm` that connects `a2` with `a3` with a length of 200mm, and `hand` that
 connects `a3` with the end effector with a length of 270mm.
 
+Here, `a0`, `a1`, `a2`, and `a3` correspond to each servomotor of the arm.
+
 To simplify calculations, we assume that the origin point starts at `a1` and
-`a0` shares the same point with `a1`.
+`a0` shares the same point with `a1` (link length of 0mm).
 
 ### Declaring Links
 
@@ -103,7 +105,18 @@ void setup() {
 
   // Calculates the angles without considering a specific approach angle
   // InverseK.solve(x, y, z, a0, a1, a2, a3)
-  if(InverseK.solve(200, 100, 100, a0, a1, a2, a3)) {
+  if(InverseK.solve(550, 0, 50, a0, a1, a2, a3)) {
+    Serial.print(a2b(a0)); Serial.print(',');
+    Serial.print(a2b(a1)); Serial.print(',');
+    Serial.print(a2b(a2)); Serial.print(',');
+    Serial.println(a2b(a3));
+  } else {
+    Serial.println("No solution found!");
+  }
+
+  // Calculates the angles considering a specific approach angle
+  // InverseK.solve(x, y, z, a0, a1, a2, a3, phi)
+  if(InverseK.solve(550, 0, 50, a0, a1, a2, a3, b2a(90.0))) {
     Serial.print(a2b(a0)); Serial.print(',');
     Serial.print(a2b(a1)); Serial.print(',');
     Serial.print(a2b(a2)); Serial.print(',');
@@ -141,3 +154,10 @@ float a2b(float a) {
 
 **If you want to control the arm using Gcode, check:**
 [CGx-Gcode-RobotArm](https://github.com/cgxeiji/CGx-Gcode-RobotArm)
+
+## Found any issues or questions?
+
+Please post a [new issue](https://github.com/cgxeiji/CGx-InverseK/issues/new)
+with your question or suggestion.
+
+Pull requests are also welcomed.
